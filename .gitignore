@@ -1,0 +1,37 @@
+# Unity generated files
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+[Ll]ogs/
+MemoryCaptures/
+
+# Visual Studio / MonoDevelop generated files
+.vscode/
+*.csproj
+*.unityproj
+*.sln
+*.suo
+*.tmp
+*.user
+*.userprefs
+*.pidb
+*.booproj
+*.svd
+
+# OS generated files
+.DS_Store
+*.apk
+*.aab
+
+# Additional cache files
+.vs/
+.idea/
+*.log
+.DS_Store
+
+# Packages
+/Packages/*
+!.*/Packages/manifest.json
+!.*/Packages/packages-lock.json
