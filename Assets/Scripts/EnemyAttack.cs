@@ -6,12 +6,12 @@ public class EnemyAttack : MonoBehaviour
     public float attackCooldown = 2f; // Задержка между атаками
     private float lastAttackTime;
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
-        Debug.Log(lastAttackTime);
+        Debug.Log("OnTriggerEnter");
         if (other.CompareTag("Player") && Time.time >= lastAttackTime + attackCooldown)
         {
-            PlayerHealth playerHealth = other.GetComponent<PlayerHealth>();
+            Health playerHealth = other.GetComponent<Health>();
             if (playerHealth != null)
             {
                 playerHealth.TakeDamage(damage);

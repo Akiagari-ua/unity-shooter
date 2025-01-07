@@ -1,22 +1,27 @@
 using UnityEngine;
+using UnityEngine.AI;
 
 public class EnemyController : MonoBehaviour
 {
-    public float moveSpeed = 3f; // Скорость движения врага
-    public Transform target; // Цель, за которой следует враг (например, игрок)
-    public Transform frontPoint; // Точка, определяющая "перед" врага
+    public Transform target; // Цель (игрок)
+    private NavMeshAgent navMeshAgent;
+
+    void Start()
+    {
+        navMeshAgent = GetComponent<NavMeshAgent>();
+    }
 
     void Update()
     {
         if (target != null)
         {
-            // Движение врага к цели
-            Vector3 direction = (target.position - transform.position).normalized;
-            transform.position += direction * moveSpeed * Time.deltaTime;
+            // Устанавливаем позицию игрока как цель
+            navMeshAgent.SetDestination(target.position);
 
-            // Поворот врага к цели относительно frontPoint
-            Vector3 lookDirection = target.position - frontPoint.position;
-            lookDirection.y = 0; // Убираем изменение по оси Y
+            // Проверяем, если враг случайно развернулся спиной
+            Vector3 lookDirection = target.position - transform.position;
+            lookDirection.y = 0; // Игнорируем высоту
+
             if (lookDirection != Vector3.zero)
             {
                 transform.rotation = Quaternion.LookRotation(lookDirection);
